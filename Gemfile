@@ -12,6 +12,7 @@ gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails", "~> 1.3"
 
 gem "jbuilder"
+gem 'slim-rails', '~> 3.6.2'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -30,6 +31,7 @@ gem "solid_cable"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'pry', '~> 0.15.0'
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
 
