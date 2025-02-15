@@ -1,0 +1,8 @@
+.col-md.3
+  .card
+    .card-body
+      h5.card-title = post.title
+      .card-text = post.body
+    ul.list-group.list-group-flush
+      li.list-group-item = post.ip
+      li.list-group-item = post.user.login

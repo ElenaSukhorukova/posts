@@ -1,0 +1,17 @@
+= content_for :posts do
+  = t('.title')
+
+section.card.col-md-12.mb-3.mt-3.content
+  .row.g-0
+    .card-body
+      h5.card-title
+        = t('.title')
+      .card-text
+        - if @posts.any?
+          .row
+            = render @posts
+        - else
+          p
+            = t('.no_posts')
+          p
+            = link_to t('posts.new.title'), new_post_path, class: 'link-secondary'

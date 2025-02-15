@@ -1,0 +1,29 @@
+= content_for :posts do
+  = t('.title')
+
+section.card.col-md-12.mb-3.mt-3.content
+  .row.g-0
+    .card-body
+      h5.card-title
+        = t('.title')
+      .card-text
+        = form_with model: @post, id: 'new_post' do |f|
+          .mb-3
+            = f.label :title, required: true, class: 'form-label'
+            = f.text_field :title, class: 'form-control', value: @post.title, required: true, placeholder: t('.placeholders.title')
+          .mb-3
+            = f.label :body, required: true, class: 'form-label'
+            = f.text_area :body, class: 'form-control', value: @post.body, required: true, placeholder: t('.placeholders.body')
+          .mb-3
+            = f.label :ip, required: true, class: 'form-label'
+            = f.text_field :ip, class: 'form-control', value: @post.ip, required: true, placeholder: t('.placeholders.ip')
+          .mb-3
+            h6.card-title
+              = t('.user_data')
+            = f.fields_for :user do |user_form|
+              .mb-3
+                = user_form.label :login, required: true, class: 'form-label'
+                = user_form.text_field :login, class: 'form-control', value: @user.login, required: true, placeholder: t('.placeholders.login')
+
+          .mb-3
+            = f.submit class: "btn btn-dark"
