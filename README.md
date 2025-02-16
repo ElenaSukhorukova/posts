@@ -20,14 +20,14 @@ Enter http://localhost:3000/posts/new to create a new post
 
 Each post you can rate choosing user and rating value from 1 to 5.
 
-## Constraints
+**Constraints**
 1. User can't rate their own posts.
 2. User can't rate one post twice
 
 ## curl requests
 Send requests using curl bash
 
-## New posts
+**New posts**
 
 Request example:
 
@@ -80,10 +80,53 @@ Error response
 }
 ```
 
-## Get posts
+**Get posts**
+
+You can get all or filtered posts. Look through examples
+
+```bash
+curl --location 'http://localhost:3000/posts' \
+--header 'Accept: application/json'
+
+curl --location 'http://localhost:3000/posts?limit=10&avarage_rating=2.33' \
+--header 'Accept: application/json'
+```
+Response examples
+
+```json
+# all posts
+[
+    {
+        "id": 200,
+        "title": "Holy Stratosphere",
+        "body": "Around the survivors a perimeter create."
+    },
+    {
+        "id": 199,
+        "title": "Holy Switch A Roo",
+        "body": "To answer power with power, the Jedi way this is"
+    },
+    {
+        "id": 198,
+        "title": "Holy Standstills",
+        "body": "Around the survivors a perimeter create."
+    },
+]
+
+# filtered posts
+
+[
+    {
+        "id": 200,
+        "title": "Holy Cryptology",
+        "body": "Ready are you? What know you of ready? For eight hundred years have I trained Jedi. My own counsel will I keep on who is to be trained. A Jedi must have the deepest commitment, the most serious mind. This one a long time have I watched. All his life has he looked away - to the future, to the horizon. Never his mind on where he was. Hmm? What he was doing. Hmph. Adventure. Heh. Excitement. Heh. A Jedi craves not these things. You are reckless.",
+        "avarage_rating": "3.0"
+    },
+]
+```
 
 
-## Rate post
+**Rate post**
 
 Request example
 

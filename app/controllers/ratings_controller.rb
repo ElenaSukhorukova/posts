@@ -11,11 +11,13 @@ class RatingsController < ApplicationController
 
     return exec_respond_to(retrieve_full_error_message(rating)) unless rating.save
 
+    post.reload
+
     respond_to do |format|
       format.json do
         render json: {
           status: :ok,
-          avarage_rating: Rating.post_has_rating(post.id),
+          avarage_rating: post.avarage_rating,
           post_id: post.id
         }
       end

@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
   def index
-    @pagy, @posts = pagy(Post.includes(:user, :ratings), limit: 6)
-    @users = User.all
+    posts = Post.includes(:user, :ratings)
+
+    @pagy, @posts = pagy(posts, limit: 6)
+    @users = posts.extract_associated(:user)
 
     respond_to do |format|
       format.html
-      format.json { render json: @posts.select(:id, :title, :body) }
+      format.json do
+        @posts = FilteredPosts.call(posts: posts, params: params).posts
+
+        render json: @posts
+      end
     end
   end
 
