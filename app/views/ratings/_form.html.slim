@@ -1,0 +1,11 @@
+h6 = t('posts.index.add_rating')
+= form_with model: Rating.new, class: 'row g-3', data: { turbo: true } do |f|
+  = f.hidden_field :post_id, value: post_id
+  .col
+    = f.label :user, class: 'form-label'
+    = f.collection_select :user_id, users, :id, :login, {}, { class: 'form-select' }
+  .col
+    = f.label :value, class: 'form-label'
+    = f.select :value, (1..5).to_a, {}, { class: 'form-select' }
+
+  = f.submit class: "btn btn-dark btn-sm"

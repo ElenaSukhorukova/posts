@@ -3,6 +3,11 @@ en:
     index:
       title: Posts
       no_posts: There are no posts. Please, add new one.
+      add_rating: Add rating to the post
+      fields:
+        ip: 'IP: '
+        user: 'User: '
+        rating: 'Rating: '
     new:
       title: New post
       user_data: User's data
@@ -14,3 +19,13 @@ en:
     create:
       error: 'Invalid data of the form: %{msg}'
       success: Post created successfully
+  ratings:
+    create:
+      user_error: User wasn't found
+      post_error: Post wasn't found
+
+  activerecord:
+    errors:
+      rating:
+        existence_user_rating_error: has already rated this post
+        user_post_error: can't rate their own post

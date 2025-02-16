@@ -30,11 +30,17 @@ gem "solid_cable"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'pagy', '~> 9.3'
+
 group :development, :test do
   gem 'pry', '~> 0.15.0'
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
 
+  gem 'faker'
+  gem 'rubocop', '~> 1.72', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem "rubocop-rails-omakase", require: false
 end
 
