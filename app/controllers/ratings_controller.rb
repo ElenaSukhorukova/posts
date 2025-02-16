@@ -12,6 +12,13 @@ class RatingsController < ApplicationController
     return exec_respond_to(retrieve_full_error_message(rating)) unless rating.save
 
     respond_to do |format|
+      format.json do
+        render json: {
+          status: :ok,
+          avarage_rating: Rating.post_has_rating(post.id),
+          post_id: post.id
+        }
+      end
       format.html
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
@@ -44,6 +51,7 @@ class RatingsController < ApplicationController
   def exec_respond_to(mgs)
     Proc.new do |message|
       respond_to do |format|
+        format.json { render json: { status: :bad_request, error: mgs } }
         format.html { redirect_to(posts_path, danger: message) }
         format.turbo_stream { flash.now[:danger] = message }
       end
