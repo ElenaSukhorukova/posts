@@ -1,8 +1,21 @@
-.col-md.3
+.col.mb-3 style='height: 500px'
   .card
     .card-body
       h5.card-title = post.title
-      .card-text = post.body
+      .card-text
+        = truncate(post.body, length: 100)
     ul.list-group.list-group-flush
-      li.list-group-item = post.ip
-      li.list-group-item = post.user.login
+      li.list-group-item
+        p
+          strong = t('posts.index.fields.ip')
+          = post.ip
+      li.list-group-item
+        p
+          strong = t('posts.index.fields.user')
+          = post.user.login
+      li.list-group-item
+        p
+          strong = t('posts.index.fields.rating')
+          = render partial: 'ratings/rating', locals: { post: post }
+      li.list-group-item
+        = render partial: 'ratings/form', locals: { post_id: post.id, users: @users }

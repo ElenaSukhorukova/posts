@@ -8,10 +8,12 @@ section.card.col-md-12.mb-3.mt-3.content
         = t('.title')
       .card-text
         - if @posts.any?
-          .row
+          .row.row-cols-3
             = render @posts
         - else
           p
             = t('.no_posts')
           p
             = link_to t('posts.new.title'), new_post_path, class: 'link-secondary'
+
+        == pagination @pagy
