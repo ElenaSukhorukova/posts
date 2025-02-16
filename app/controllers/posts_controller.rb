@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user)
+    @pagy, @posts = pagy(Post.includes(:user, :ratings), limit: 6)
+    @users = User.all
   end
 
   def new
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
 
       @post = Post.new
 
-      render :new and return
+      render(:new, status: :bad_request) and return
     end
 
     @post = @user.posts.new(post_params)
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
 
     flash.now[:danger] = t('.error', msg: retrieve_full_error_message(@post))
 
-    render :new
+    render :new, status: :bad_request
   end
 
   private
