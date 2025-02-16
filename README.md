@@ -1,25 +1,14 @@
-# README
+# Post app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App to generate posts and ratings
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Run in your console next commands:
+```bash
+bundle
+yarn install
+rails assets:precompile
+rails db:prepare
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# posts
