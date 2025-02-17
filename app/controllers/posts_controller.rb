@@ -26,14 +26,14 @@ class PostsController < ApplicationController
     if @user.new_record? && !@user.save
       @post = Post.new
 
-      return exec_bad_request_response(t('.error', msg: retrieve_full_error_message(@user)))
+      return exec_bad_request_response(t(".error", msg: retrieve_full_error_message(@user)))
     end
 
     @post = @user.posts.new(post_params)
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to(posts_path, success: t('.success')) }
+        format.html { redirect_to(root_path, success: t(".success")) }
         format.json { render json: { status: :ok, user: @user, post: @post } }
       end and return
     end

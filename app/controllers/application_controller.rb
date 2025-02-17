@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def retrieve_full_error_message(model)
-    model.errors.full_messages.join('; ')
+    model.errors.full_messages.join("; ")
   end
 end

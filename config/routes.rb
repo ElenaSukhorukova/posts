@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "posts#index"
+  root to: "posts#index"
 
   resources :posts, except: %i[destroy edit update show]
   resources :ratings, only: %i[create]
