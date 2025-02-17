@@ -29,7 +29,8 @@ end
 
 unless Rating.any?
   Post.order("RANDOM()").take(150).each do |post|
-    20.times do
+    puts "adding raing to post#{post.id}. please wait..."
+    (1..10).to_a.sample.times do
       post.ratings.create(
         user_id: User.order("RANDOM()").take.id,
         value: (1..5).to_a.sample
