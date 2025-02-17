@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to(posts_path, success: t('.success')) }
+        format.html { redirect_to(root_path, success: t('.success')) }
         format.json { render json: { status: :ok, user: @user, post: @post } }
       end and return
     end

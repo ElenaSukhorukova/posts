@@ -19,7 +19,6 @@ class RatingsController < ApplicationController
           post_id: post.id
         }
       end
-      format.html
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(post)}_ratings_count",
@@ -52,7 +51,7 @@ class RatingsController < ApplicationController
     Proc.new do |message|
       respond_to do |format|
         format.json { render json: { status: :bad_request, error: mgs } }
-        format.html { redirect_to(posts_path, danger: message) }
+        format.html { redirect_to(root_path, danger: message) }
         format.turbo_stream { flash.now[:danger] = message }
       end
     end.call(mgs)

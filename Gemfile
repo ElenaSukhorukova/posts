@@ -36,7 +36,6 @@ group :development, :test do
   gem 'pry', '~> 0.15.0'
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
-
   gem 'faker'
   gem 'rubocop', '~> 1.72', require: false
   gem 'rubocop-performance', require: false
@@ -46,4 +45,14 @@ end
 
 group :development do
   gem "web-console"
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'rubocop-rspec', require: false
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner-active_record'
 end

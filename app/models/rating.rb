@@ -2,6 +2,7 @@ class Rating < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
+  validates :value, presence: true, inclusion: { in: 1..5 }
   validate :validate_user_association, on: :create
 
   def self.post_has_rating(post_id)

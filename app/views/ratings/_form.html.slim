@@ -1,5 +1,5 @@
 h6 = t('posts.index.add_rating')
-= form_with model: Rating.new, class: 'row g-3', data: { turbo: true } do |f|
+= form_with model: Rating.new, class: 'row g-3', id: "new_rating_post_#{post_id}", data: { turbo: true } do |f|
   = f.hidden_field :post_id, value: post_id
   .col
     = f.label :user, class: 'form-label'
