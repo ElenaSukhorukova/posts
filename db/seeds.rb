@@ -1,5 +1,6 @@
 # Please create a seeds (db/seeds.rb) script that will generate at least 200k
-# posts and about 100 users (please use about 50 unique IP addresses). Some posts (about 75%) should also be rated ratings.
+# posts and about 100 users (please use about 50 unique IP addresses).
+# Some posts (about 75%) should also be rated ratings.
 # Important: the script should use API controllers and actions, consider using curl to generate data.
 # One user should be able to vote for one post only once. User logins should be unique.
 
