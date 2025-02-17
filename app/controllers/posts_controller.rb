@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
   def index
-    posts = Post.includes(:user, :ratings)
-
-    @pagy, @posts = pagy(posts, limit: 6)
-    @users = posts.extract_associated(:user)
-
     respond_to do |format|
-      format.html
-      format.json do
-        @posts = FilteredPosts.call(posts: posts, params: params).posts
+      format.html do
+        posts = Post.includes(:user, :ratings)
 
-        render json: @posts
+        @pagy, @posts = pagy(posts, limit: 6)
+        @users = posts.extract_associated(:user)
+      end
+      format.json do
+        posts = FilteredPosts.call(params).posts
+
+        render json: posts
       end
     end
   end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.html { redirect_to(posts_path, success: t('.success')) }
-        format.json { render json: { status: :ok, user: @user.as_json, post: @post.as_json } }
+        format.json { render json: { status: :ok, user: @user, post: @post } }
       end and return
     end
 

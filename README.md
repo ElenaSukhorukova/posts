@@ -82,15 +82,19 @@ Error response
 
 **Get posts**
 
-You can get all or filtered posts. Look through examples
+You can get all or filtered posts. Look through examples.
 
 ```bash
 curl --location 'http://localhost:3000/posts' \
 --header 'Accept: application/json'
 
-curl --location 'http://localhost:3000/posts?limit=10&avarage_rating=2.33' \
+curl --location 'http://localhost:3000/posts?limit=3&avarage_rating=2.8' \
+--header 'Accept: application/json'
+
+curl --location 'http://localhost:3000/posts?ips=204.129.100.85,226.249.183.227,227.67.53.110' \
 --header 'Accept: application/json'
 ```
+
 Response examples
 
 ```json
@@ -113,18 +117,59 @@ Response examples
     },
 ]
 
-# filtered posts
+# filtered by limit and avarage_ratings
+[
+    {
+        "id": 196,
+        "title": "Holy Perfect Pitch",
+        "body": "Difficult to see. Always in motion is the future...",
+        "avarage_ratings": "2.8"
+    },
+    {
+        "id": 175,
+        "title": "Holy Hamstrings",
+        "body": "Much to learn you still have my old padawan. ... This is just the beginning!",
+        "avarage_ratings": "2.8"
+    },
+    {
+        "id": 2,
+        "title": "Holy Long John Silver",
+        "body": "Once you start down the dark path, forever will it dominate your destiny, consume you it will.",
+        "avarage_ratings": "2.8"
+    }
+]
+
+# filtered by ips
 
 [
     {
-        "id": 200,
-        "title": "Holy Cryptology",
-        "body": "Ready are you? What know you of ready? For eight hundred years have I trained Jedi. My own counsel will I keep on who is to be trained. A Jedi must have the deepest commitment, the most serious mind. This one a long time have I watched. All his life has he looked away - to the future, to the horizon. Never his mind on where he was. Hmm? What he was doing. Hmph. Adventure. Heh. Excitement. Heh. A Jedi craves not these things. You are reckless.",
-        "avarage_rating": "3.0"
+        "227.67.53.110": [
+            "Keiko",
+            "Jeffrey",
+            "Fidel",
+            "Jetta",
+            "Roderick"
+        ]
     },
+    {
+        "204.129.100.85": [
+            "Myrtie",
+            "Cedric",
+            "Alvin",
+            "Anisa"
+        ]
+    },
+    {
+        "226.249.183.227": [
+            "Silas",
+            "Haley",
+            "Jerrie",
+            "Vito",
+            "Waldo"
+        ]
+    }
 ]
 ```
-
 
 **Rate post**
 
