@@ -325,8 +325,9 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
-    rubocop-rspec (2.16.0)
-      rubocop (~> 1.33)
+    rubocop-rspec (3.5.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
     shoulda-matchers (6.4.0)
