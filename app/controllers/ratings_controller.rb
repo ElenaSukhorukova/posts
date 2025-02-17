@@ -22,7 +22,7 @@ class RatingsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(post)}_ratings_count",
-          partial: 'ratings/rating',
+          partial: "ratings/rating",
           locals: { post: post }
         )
       end
@@ -37,10 +37,10 @@ class RatingsController < ApplicationController
 
   def validate_user_and_post(user, post)
     msg = if user.blank?
-        t('.user_error')
-      elsif post.blank?
-        t('.post_error')
-      end
+        t(".user_error")
+    elsif post.blank?
+        t(".post_error")
+    end
 
     return if msg.blank?
 

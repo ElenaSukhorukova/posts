@@ -4,10 +4,10 @@ class FilteredPosts < Base
   def call
     limit = params[:limit]
     avarage_rating = params[:avarage_rating]
-    ips = params[:ips]&.split(',')
+    ips = params[:ips]&.split(",")
 
-    if [limit, avarage_rating, ips].all?(&:blank?)
-      @posts = Post.order(created_at: :desc).as_json(only: [:id, :title, :body])
+    if [ limit, avarage_rating, ips ].all?(&:blank?)
+      @posts = Post.order(created_at: :desc).as_json(only: [ :id, :title, :body ])
 
       return self
     end
@@ -23,7 +23,7 @@ class FilteredPosts < Base
     @posts = filter_by_avarage_ratings(@posts, avarage_rating) if avarage_rating.present?
     @posts = filter_by_limit(@posts, limit) if limit.present?
 
-    @posts = @posts.as_json(only: [:id, :title, :body, :avarage_ratings])
+    @posts = @posts.as_json(only: [ :id, :title, :body, :avarage_ratings ])
 
     self
   end
@@ -31,11 +31,11 @@ class FilteredPosts < Base
   private
 
   def filter_by_avarage_ratings(posts, avarage_rating)
-    posts.select('posts.*').merge(
-      Rating.select('post_id, AVG(value) AS avarage_ratings')
-            .group('post_id')
-            .having('AVG(value) = ?', avarage_rating)
-    ).group('posts.id').order(created_at: :desc)
+    posts.select("posts.*").merge(
+      Rating.select("post_id, AVG(value) AS avarage_ratings")
+            .group("post_id")
+            .having("AVG(value) = ?", avarage_rating)
+    ).group("posts.id").order(created_at: :desc)
   end
 
   def filter_by_limit(posts, limit)
@@ -44,8 +44,8 @@ class FilteredPosts < Base
 
   def filter_by_ips(posts, ips)
     posts = posts.where(ip: ips)
-                 .select('posts.ip, users.login')
-                 .group('posts.ip, users.login')
+                 .select("posts.ip, users.login")
+                 .group("posts.ip, users.login")
 
     posts_result = []
 

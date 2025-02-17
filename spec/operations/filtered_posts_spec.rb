@@ -53,7 +53,7 @@ RSpec.describe FilteredPosts do
 
       expect(included_ip.present?).to eq(true)
       expect(included_ip).to include(
-        post.ip => [post.user.login]
+        post.ip => [ post.user.login ]
       )
     end
   end

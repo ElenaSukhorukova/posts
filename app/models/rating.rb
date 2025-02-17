@@ -13,11 +13,11 @@ class Rating < ApplicationRecord
 
   def validate_user_association
     if Rating.where(post_id: post_id, user_id: user_id).any?
-      errors.add(:user_id, I18n.t('activerecord.errors.rating.existence_user_rating_error'))
+      errors.add(:user_id, I18n.t("activerecord.errors.rating.existence_user_rating_error"))
     end
 
     if Post.find(post_id).user_id == user_id
-      errors.add(:user_id, I18n.t('activerecord.errors.rating.user_post_error'))
+      errors.add(:user_id, I18n.t("activerecord.errors.rating.user_post_error"))
     end
   end
 end
