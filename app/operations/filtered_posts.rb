@@ -4,7 +4,7 @@ class FilteredPosts < Base
   def call
     limit = params[:limit]
     avarage_rating = params[:avarage_rating]
-    ips = params[:ips]&.split(",")
+    ips = params.extract_value(:ips, delimiter: ",")
 
     if [ limit, avarage_rating, ips ].all?(&:blank?)
       @posts = Post.order(created_at: :desc).as_json(only: [ :id, :title, :body ])
