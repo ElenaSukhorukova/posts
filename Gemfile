@@ -12,7 +12,7 @@ gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails", "~> 1.3"
 
 gem "jbuilder"
-gem "slim-rails", "~> 3.6.2"
+gem "slim-rails", "~> 3.7.0"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
