@@ -50,7 +50,7 @@ end
 group :test do
   gem "capybara"
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 6.1.0"
+  gem "rspec-rails", "~> 7.1.1"
   gem "rubocop-rspec", require: false
   gem "shoulda-matchers"
   gem "rails-controller-testing"
